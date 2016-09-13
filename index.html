@@ -10,8 +10,9 @@
 <script type="text/javascript" src="./hangman.js"></script>
 <body>
     <div>
-        <input id="userGuess"></input>
+        <input id="userGuess" maxlength="1"></input>
         <button type="button" id="checkGuess">Check</button>
+        <p id="alreadyGuessed" display="none"></p>
     </div>
 
     <div>
@@ -27,6 +28,9 @@
     <div>
         <p>Word:</p>
         <p id="wordInPlay"></p>
+    </div>
+    <div>
+        <p id="gameStatus" display="none"></p>
     </div>
     <div>
         <button type="button" id="newGame">New Game</button>
