@@ -29,13 +29,18 @@ $(document).ready(function() {
 		localStorage.setItem("guessesMade", JSON.stringify(guessesMade))
 		localStorage.setItem("guessesLeft", (guessesLeft))
 		localStorage.setItem("gameSaved", "yes");
+		localStorage.setItem("won", JSON.stringify(won));
+		localStorage.setItem("lost", JSON.stringify(lost));
 	}
 
 	function loadGame() {
-		word = (localStorage.getItem("word"))
-		wordInPlay = JSON.parse(localStorage.getItem("wordInPlay"))
-		guessesMade = JSON.parse(localStorage.getItem("guessesMade"))
-		guessesLeft = (localStorage.getItem("guessesLeft"))
+		word = (localStorage.getItem("word"));
+		wordInPlay = JSON.parse(localStorage.getItem("wordInPlay"));
+		guessesMade = JSON.parse(localStorage.getItem("guessesMade"));
+		guessesLeft = (localStorage.getItem("guessesLeft"));
+		won = JSON.parse(localStorage.getItem("won"));
+		lsot = JSON.parse(localStorage.getItem("lost"));
+		
 	}
 
 	if (localStorage.getItem("gameSaved") != "yes") {
@@ -59,10 +64,10 @@ $(document).ready(function() {
 
 			guess = userGuess.val().slice(0, 1);
 
-			if (alreadyGuessed(guess)) {
+			if (alreadyGuessed(guess.toLowerCase())) {
 				guessed.text(guess + " has already been guessed");
 				guessed.show();
-			} else if (!checkGuess(guess)) {
+			} else if (!checkGuess(guess.toLowerCase())) {
 				guessesLeft -= 1;
 			}
 
@@ -71,8 +76,8 @@ $(document).ready(function() {
 			left.text(guessesLeft);
 			made.text(guessesMade);
 			game.text(wordInPlay.join(""));
-			saveGame();
 			checkGame();
+			saveGame();
 		}
 	})
 
